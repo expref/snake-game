@@ -10,35 +10,26 @@ const PURPLE = '#7C3AED';
 const PINK = '#EC4899';
 const ORANGE = '#F97316';
 const OUT = path.join(__dirname, '..', 'store');
+const ICON = path.join(__dirname, '..', 'assets', 'icon.png');
 
-// Snake "S" mark (same shape as the app icon).
-function snakeMark(size, stroke = '#0b1020', sw = 11) {
-  return `
-  <svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <path d="M30,72 Q30,50 50,50 Q70,50 70,30 Q70,16 56,16"
-          fill="none" stroke="${stroke}" stroke-width="${sw}" stroke-linecap="round"/>
-    <circle cx="56" cy="16" r="3.2" fill="${stroke}"/>
-  </svg>`;
-}
-
-// 512x512 hi-res icon: full-bleed gradient square + snake mark (Play masks it).
-async function playIcon() {
-  const size = 512;
-  const bg = Buffer.from(
+// A rounded-corner tile cut from the real app icon.
+async function iconTile(size, radius) {
+  const mask = Buffer.from(
     `<svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="${PURPLE}"/>
-          <stop offset="0.55" stop-color="${PINK}"/>
-          <stop offset="1" stop-color="${ORANGE}"/>
-        </linearGradient>
-      </defs>
-      <rect width="${size}" height="${size}" fill="url(#g)"/>
+      <rect width="${size}" height="${size}" rx="${radius}" fill="#fff"/>
     </svg>`
   );
-  const mark = Buffer.from(snakeMark(Math.round(size * 0.6)));
-  await sharp(bg)
-    .composite([{ input: mark, gravity: 'center' }])
+  return sharp(ICON)
+    .resize(size, size)
+    .composite([{ input: mask, blend: 'dest-in' }])
+    .png()
+    .toBuffer();
+}
+
+// 512x512 hi-res icon: the real app icon, flattened (Play wants no transparency).
+async function playIcon() {
+  await sharp(ICON)
+    .resize(512, 512)
     .flatten({ background: PURPLE })
     .png()
     .toFile(path.join(OUT, 'play-icon-512.png'));
@@ -85,11 +76,6 @@ async function featureGraphic() {
       <text x="857" y="428">12</text>
     </g>
 
-    <!-- app icon tile on the left -->
-    <g>
-      <rect x="70" y="120" width="260" height="260" rx="58" fill="url(#tile)"/>
-    </g>
-
     <!-- title + tagline -->
     <g font-family="Segoe UI, Arial, Helvetica, sans-serif" fill="#ffffff">
       <text x="372" y="210" font-size="74" font-weight="800">Snake &amp;</text>
@@ -99,9 +85,9 @@ async function featureGraphic() {
     </g>
   </svg>`;
 
-  const mark = Buffer.from(snakeMark(170));
+  const tile = await iconTile(260, 58);
   await sharp(Buffer.from(svg))
-    .composite([{ input: mark, left: 115, top: 165 }])
+    .composite([{ input: tile, left: 70, top: 120 }])
     .png()
     .toFile(path.join(OUT, 'feature-graphic.png'));
   console.log('wrote feature-graphic.png (1024x500)');
