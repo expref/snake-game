@@ -86,9 +86,14 @@ async function featureGraphic() {
   </svg>`;
 
   const tile = await iconTile(260, 58);
-  await sharp(Buffer.from(svg))
+  // First pass: render + composite the icon tile.
+  const composited = await sharp(Buffer.from(svg))
     .composite([{ input: tile, left: 70, top: 120 }])
-    .flatten({ background: '#0f0c29' })
+    .png()
+    .toBuffer();
+  // Second pass: strip the alpha channel (Play forbids transparency).
+  await sharp(composited)
+    .removeAlpha()
     .png()
     .toFile(path.join(OUT, 'feature-graphic.png'));
   console.log('wrote feature-graphic.png (1024x500)');
