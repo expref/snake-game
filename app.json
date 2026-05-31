@@ -12,7 +12,6 @@
     },
     "android": {
       "package": "com.expref.snakemultiply",
-      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#7C3AED",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -22,6 +21,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5648bc6a-9b06-4b09-99f4-ddb804b87b86"
+      }
     }
   }
 }
