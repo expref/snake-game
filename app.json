@@ -8,10 +8,10 @@
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.titugames.snakemultiply"
+      "bundleIdentifier": "com.expref.snakemultiply"
     },
     "android": {
-      "package": "com.titugames.snakemultiply",
+      "package": "com.expref.snakemultiply",
       "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#7C3AED",
