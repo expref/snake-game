@@ -70,6 +70,21 @@ Download now, and turn times-table practice into a game you'll WANT to play!
 
 ---
 
+## Release notes / "What's new" (≤500 chars, for v1.0.0)
+
+```
+Welcome to Snake & Multiply! 🐍✖️
+• Learn your times tables (×2 to ×12) the fun way
+• Eat the shapes in order, uncover a mystery picture, and clear all 5 levels
+• Big game-over celebrations: applause, confetti, sprinkles, a chocolate shower & a golden trophy
+• Voice numbers, music & haptics — all toggleable
+• No ads, no sign-in, plays fully offline
+
+Have fun and happy multiplying!
+```
+
+---
+
 ## Graphic assets needed (you must create/upload these)
 
 | Asset | Spec | Status |
