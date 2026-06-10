@@ -1,6 +1,5 @@
 // Generates celebration audio as WAV files:
-//   claps.wav — a warm round of applause (for losing past level 1)
-//   win.wav   — a triumphant brass fanfare layered with a big crowd cheer
+//   win.wav — a triumphant brass fanfare layered with a big crowd cheer
 // Run: node scripts/gen-celebrate.js
 const fs = require('fs');
 const path = require('path');
@@ -93,19 +92,6 @@ function addApplause(buf, startT, endT, density, baseAmp) {
   }
 }
 
-function clapsSound() {
-  const dur = 3.0;
-  const n = Math.floor(SAMPLE_RATE * dur);
-  const buf = new Float32Array(n);
-  // Fewer, fuller claps (down from 220) so they read as a real round of
-  // applause rather than a continuous static wash.
-  addApplause(buf, 0.0, dur, 130, 0.3);
-  normalize(buf, 0.9);
-  softClip(buf, 1.1);
-  fadeEnds(buf, 70);
-  writeWav(path.join(__dirname, '..', 'assets', 'sounds', 'claps.wav'), buf);
-}
-
 // Brass-ish tone: a few harmonics with gentle vibrato.
 function brass(freq, t) {
   const vib = 1 + 0.006 * Math.sin(2 * Math.PI * 6 * t);
@@ -161,6 +147,5 @@ function winSound() {
   writeWav(path.join(__dirname, '..', 'assets', 'sounds', 'win.wav'), buf);
 }
 
-clapsSound();
 winSound();
 console.log('done');
