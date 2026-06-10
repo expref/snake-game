@@ -39,18 +39,39 @@ function normalize(buf, peak = 0.85) {
   for (let i = 0; i < buf.length; i++) buf[i] *= g;
 }
 
-// One hand-clap: a short burst of decaying filtered noise.
+// Gentle tanh saturation rounds off any remaining peaks so the mix never
+// clips hard (hard clipping is a big part of the "old speaker" harshness).
+function softClip(buf, drive = 1.1) {
+  for (let i = 0; i < buf.length; i++) buf[i] = Math.tanh(buf[i] * drive);
+}
+
+// Linear fade in/out at the ends so the clip starts and stops smoothly.
+function fadeEnds(buf, ms = 60) {
+  const f = Math.floor((SAMPLE_RATE * ms) / 1000);
+  for (let i = 0; i < f && i < buf.length; i++) {
+    buf[i] *= i / f;
+    buf[buf.length - 1 - i] *= i / f;
+  }
+}
+
+// One hand-clap: a band-passed noise burst with a sharp attack. Two one-pole
+// low-passes are subtracted to band-limit the noise (~300 Hz–4 kHz) so it reads
+// as a crisp clap instead of the harsh broadband hiss a raw-noise burst makes.
 function addClap(buf, startSample, amp, lenMs) {
   const len = Math.floor((SAMPLE_RATE * lenMs) / 1000);
-  let prev = 0;
+  const attack = Math.max(1, Math.floor(len * 0.04));
+  let lpFast = 0; // rolls off the harsh top end (hiss)
+  let lpSlow = 0; // reference for removing low rumble
   for (let i = 0; i < len; i++) {
     const idx = startSample + i;
     if (idx < 0 || idx >= buf.length) break;
-    const env = Math.exp(-i / (len * 0.28));
-    // light low-pass on the noise so it reads as a clap, not static.
     const white = Math.random() * 2 - 1;
-    prev = prev * 0.55 + white * 0.45;
-    buf[idx] += prev * amp * env;
+    lpFast += 0.5 * (white - lpFast);
+    lpSlow += 0.035 * (white - lpSlow);
+    const band = lpFast - lpSlow; // band-passed clap body
+    const a = i < attack ? i / attack : 1; // fast attack
+    const env = a * Math.exp(-i / (len * 0.22)); // quick exponential decay
+    buf[idx] += band * amp * env;
   }
 }
 
@@ -76,8 +97,12 @@ function clapsSound() {
   const dur = 3.0;
   const n = Math.floor(SAMPLE_RATE * dur);
   const buf = new Float32Array(n);
-  addApplause(buf, 0.0, dur, 220, 0.16);
-  normalize(buf, 0.8);
+  // Fewer, fuller claps (down from 220) so they read as a real round of
+  // applause rather than a continuous static wash.
+  addApplause(buf, 0.0, dur, 130, 0.3);
+  normalize(buf, 0.9);
+  softClip(buf, 1.1);
+  fadeEnds(buf, 70);
   writeWav(path.join(__dirname, '..', 'assets', 'sounds', 'claps.wav'), buf);
 }
 
@@ -128,9 +153,11 @@ function winSound() {
   addNote(buf, N.G6, 0.74, 1.5, 0.2);
 
   // Crowd erupts once the chord lands.
-  addApplause(buf, 0.55, dur, 240, 0.13);
+  addApplause(buf, 0.55, dur, 150, 0.24);
 
-  normalize(buf, 0.9);
+  normalize(buf, 0.92);
+  softClip(buf, 1.1);
+  fadeEnds(buf, 70);
   writeWav(path.join(__dirname, '..', 'assets', 'sounds', 'win.wav'), buf);
 }
 

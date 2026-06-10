@@ -34,7 +34,6 @@ const eatSound = require('./assets/sounds/eat.wav');
 const deadSound = require('./assets/sounds/dead.wav');
 const musicSound = require('./assets/sounds/music.wav');
 const introSound = require('./assets/sounds/intro.wav');
-const clapsSound = require('./assets/sounds/claps.wav');
 const winSound = require('./assets/sounds/win.wav');
 
 const COLS = 11;
@@ -118,6 +117,63 @@ const CELEBRITIES = [
   { name: 'USAIN BOLT', country: 'JAMAICA', flag: ['#009B3A', '#FED100'], hair: '#1a1a1a', skin: '#6a4830', emoji: '🏃' },
   { name: 'CAMILA CABELLO', country: 'CUBA', flag: ['#002A8F', '#CF142B'], hair: '#3a2a1a', skin: '#e0bf99', emoji: '🎤' },
   { name: 'KAROL G', country: 'COLOMBIA', flag: ['#FCD116', '#003893'], hair: '#e0a040', skin: '#dcb094', emoji: '🎤' },
+
+  // ---- Footballers: World Cup, European & all-time greats ----
+  { name: 'NEYMAR JR', country: 'BRAZIL', flag: ['#009C3B', '#FFDF00'], hair: '#2a1a1a', skin: '#cea087', emoji: '⚽' },
+  { name: 'VINICIUS JR', country: 'BRAZIL', flag: ['#009C3B', '#FFDF00'], hair: '#1a1a1a', skin: '#7a5638', emoji: '⚽' },
+  { name: 'PELE', country: 'BRAZIL', flag: ['#009C3B', '#FFDF00'], hair: '#1a1a1a', skin: '#6a4830', emoji: '⚽' },
+  { name: 'RONALDINHO', country: 'BRAZIL', flag: ['#009C3B', '#FFDF00'], hair: '#1a1a1a', skin: '#7a5638', emoji: '⚽' },
+  { name: 'MARADONA', country: 'ARGENTINA', flag: ['#74ACDF', '#FFFFFF'], hair: '#1a1a1a', skin: '#dcb094', emoji: '⚽' },
+  { name: 'LAUTARO MARTINEZ', country: 'ARGENTINA', flag: ['#74ACDF', '#FFFFFF'], hair: '#1a1a1a', skin: '#dcb094', emoji: '⚽' },
+  { name: 'HARRY KANE', country: 'ENGLAND', flag: ['#FFFFFF', '#CF142B'], hair: '#5a3a1a', skin: '#f0c8a8', emoji: '⚽' },
+  { name: 'JUDE BELLINGHAM', country: 'ENGLAND', flag: ['#FFFFFF', '#CF142B'], hair: '#1a1a1a', skin: '#c89870', emoji: '⚽' },
+  { name: 'DAVID BECKHAM', country: 'ENGLAND', flag: ['#FFFFFF', '#CF142B'], hair: '#c8a866', skin: '#f0c8a8', emoji: '⚽' },
+  { name: 'ANTOINE GRIEZMANN', country: 'FRANCE', flag: ['#0055A4', '#EF4135'], hair: '#5a3a1a', skin: '#f0c8a8', emoji: '⚽' },
+  { name: 'ZINEDINE ZIDANE', country: 'FRANCE', flag: ['#0055A4', '#EF4135'], hair: '#3a2a1a', skin: '#e0bf99', emoji: '⚽' },
+  { name: 'PEDRI', country: 'SPAIN', flag: ['#AA151B', '#F1BF00'], hair: '#1a1a1a', skin: '#e0bf99', emoji: '⚽' },
+  { name: 'VIRGIL VAN DIJK', country: 'NETHERLANDS', flag: ['#AE1C28', '#21468B'], hair: '#1a1a1a', skin: '#7a5638', emoji: '⚽' },
+  { name: 'HEUNG-MIN SON', country: 'S.KOREA', flag: ['#003478', '#C60C30'], hair: '#1a1a1a', skin: '#f0d3b8', emoji: '⚽' },
+  { name: 'LUIS SUAREZ', country: 'URUGUAY', flag: ['#7B9AD8', '#FFFFFF'], hair: '#5a3a1a', skin: '#e9d2af', emoji: '⚽' },
+  { name: 'SADIO MANE', country: 'SENEGAL', flag: ['#00853F', '#FDEF42'], hair: '#1a1a1a', skin: '#5a3818', emoji: '⚽' },
+  { name: 'ACHRAF HAKIMI', country: 'MOROCCO', flag: ['#C1272D', '#006233'], hair: '#1a1a1a', skin: '#a87858', emoji: '⚽' },
+  { name: 'RIYAD MAHREZ', country: 'ALGERIA', flag: ['#006233', '#FFFFFF'], hair: '#1a1a1a', skin: '#a87858', emoji: '⚽' },
+  { name: 'GARETH BALE', country: 'WALES', flag: ['#C8102E', '#00B140'], hair: '#3a2a1a', skin: '#f0c8a8', emoji: '⚽' },
+
+  // ---- Hollywood actors & actresses ----
+  { name: 'LEONARDO DICAPRIO', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#c8a866', skin: '#f0c8a8', emoji: '🎬' },
+  { name: 'TOM CRUISE', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#1a1a1a', skin: '#f0c8a8', emoji: '🎬' },
+  { name: 'BRAD PITT', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#c8a866', skin: '#f0c8a8', emoji: '🎬' },
+  { name: 'ANGELINA JOLIE', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#2a1a1a', skin: '#e9c8a0', emoji: '🎬' },
+  { name: 'SCARLETT JOHANSSON', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#e9d18a', skin: '#f6d2bd', emoji: '🎬' },
+  { name: 'WILL SMITH', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#1a1a1a', skin: '#6a4830', emoji: '🎬' },
+  { name: 'DENZEL WASHINGTON', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#b8b8b8', skin: '#5a3818', emoji: '🎬' },
+  { name: 'ROBERT DOWNEY JR', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#1a1a1a', skin: '#e9c8a0', emoji: '🎬' },
+  { name: 'TOM HANKS', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#3a2a1a', skin: '#f0c8a8', emoji: '🎬' },
+  { name: 'MORGAN FREEMAN', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#cccccc', skin: '#5a3818', emoji: '🎬' },
+  { name: 'DWAYNE JOHNSON', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#3a2a1a', skin: '#a87858', emoji: '🎬' },
+  { name: 'ZENDAYA', country: 'USA', flag: ['#B22234', '#3C3B6E'], hair: '#1a1a1a', skin: '#a87858', emoji: '🎬' },
+  { name: 'KEANU REEVES', country: 'CANADA', flag: ['#FF0000', '#FFFFFF'], hair: '#1a1a1a', skin: '#e9c8a0', emoji: '🎬' },
+  { name: 'EMMA WATSON', country: 'UK', flag: ['#012169', '#C8102E'], hair: '#5a3a1a', skin: '#f3c5a3', emoji: '🎬' },
+  { name: 'DANIEL CRAIG', country: 'UK', flag: ['#012169', '#C8102E'], hair: '#c8a866', skin: '#f0c8a8', emoji: '🎬' },
+  { name: 'TOM HOLLAND', country: 'UK', flag: ['#012169', '#C8102E'], hair: '#3a2a1a', skin: '#f0c8a8', emoji: '🎬' },
+  { name: 'IDRIS ELBA', country: 'UK', flag: ['#012169', '#C8102E'], hair: '#1a1a1a', skin: '#5a3818', emoji: '🎬' },
+  { name: 'HENRY CAVILL', country: 'UK', flag: ['#012169', '#C8102E'], hair: '#1a1a1a', skin: '#f0c8a8', emoji: '🎬' },
+  { name: 'CHRIS HEMSWORTH', country: 'AUSTRALIA', flag: ['#012169', '#E4002B'], hair: '#c8a866', skin: '#f0c8a8', emoji: '🎬' },
+  { name: 'MARGOT ROBBIE', country: 'AUSTRALIA', flag: ['#012169', '#E4002B'], hair: '#e9d18a', skin: '#f6d2bd', emoji: '🎬' },
+
+  // ---- Established actors around the world ----
+  { name: 'PRIYANKA CHOPRA', country: 'INDIA', flag: ['#FF9933', '#138808'], hair: '#1a1a1a', skin: '#c89b6c', emoji: '🎬' },
+  { name: 'AAMIR KHAN', country: 'INDIA', flag: ['#FF9933', '#138808'], hair: '#1a1a1a', skin: '#c89b6c', emoji: '🎬' },
+  { name: 'AMITABH BACHCHAN', country: 'INDIA', flag: ['#FF9933', '#138808'], hair: '#b8b8b8', skin: '#c89b6c', emoji: '🎬' },
+  { name: 'DEEPIKA PADUKONE', country: 'INDIA', flag: ['#FF9933', '#138808'], hair: '#2a1a1a', skin: '#dcb094', emoji: '🎬' },
+  { name: 'LEE JUNG-JAE', country: 'S.KOREA', flag: ['#003478', '#C60C30'], hair: '#1a1a1a', skin: '#f0d3b8', emoji: '🎬' },
+  { name: 'TONY LEUNG', country: 'HONG KONG', flag: ['#DE2910', '#FFFFFF'], hair: '#1a1a1a', skin: '#e8c094', emoji: '🎬' },
+  { name: 'ZHANG ZIYI', country: 'CHINA', flag: ['#DE2910', '#FFDE00'], hair: '#1a1a1a', skin: '#eed4b8', emoji: '🎬' },
+  { name: 'KEN WATANABE', country: 'JAPAN', flag: ['#BC002D', '#FFFFFF'], hair: '#1a1a1a', skin: '#eed4b8', emoji: '🎬' },
+  { name: 'PENELOPE CRUZ', country: 'SPAIN', flag: ['#AA151B', '#F1BF00'], hair: '#2a1a1a', skin: '#e9c8a0', emoji: '🎬' },
+  { name: 'ANTONIO BANDERAS', country: 'SPAIN', flag: ['#AA151B', '#F1BF00'], hair: '#1a1a1a', skin: '#dcb094', emoji: '🎬' },
+  { name: 'MARION COTILLARD', country: 'FRANCE', flag: ['#0055A4', '#EF4135'], hair: '#3a2a1a', skin: '#f0c8a8', emoji: '🎬' },
+  { name: 'MONICA BELLUCCI', country: 'ITALY', flag: ['#009246', '#CE2B37'], hair: '#2a1a1a', skin: '#e9c8a0', emoji: '🎬' },
 ];
 
 // In the 10x5 tile grid covering the board, these tiles sit over the
@@ -282,6 +338,20 @@ const SHAPES = {
 const STORAGE_KEY_BEST = 'snake.tables.best.v3';
 const STORAGE_KEY_SETTINGS = 'snake.settings.v1';
 const STORAGE_KEY_PROFILE = 'snake.profile.v1';
+const STORAGE_KEY_RECENT = 'snake.recentCelebs.v1';
+// Don't show the same puzzle celebrity again until this many other picks have
+// gone by (persisted across sessions).
+const RECENT_CELEB_LIMIT = 50;
+
+// Pick a random celebrity whose name isn't among the most recent picks, so the
+// puzzle face keeps changing. Falls back to the full list only if every name
+// has been used within the recent window.
+function pickCelebExcluding(recentNames) {
+  const recent = new Set(recentNames);
+  const fresh = CELEBRITIES.filter((c) => !recent.has(c.name));
+  const pool = fresh.length ? fresh : CELEBRITIES;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
 const APP_VERSION = '1.0.0';
 const isReverse = (a, b) => a.x === -b.x && a.y === -b.y;
 
@@ -401,8 +471,9 @@ export default function App() {
   const deadRef = useRef(null);
   const musicRef = useRef(null);
   const introRef = useRef(null);
-  const clapsRef = useRef(null);
   const winRef = useRef(null);
+  // Names of recently shown puzzle celebrities, newest last (see pickCeleb).
+  const recentCelebsRef = useRef([]);
 
   useEffect(() => {
     AsyncStorage.getItem(STORAGE_KEY_BEST)
@@ -453,6 +524,15 @@ export default function App() {
         }
       })
       .catch(() => {});
+    AsyncStorage.getItem(STORAGE_KEY_RECENT)
+      .then((raw) => {
+        if (!raw) return;
+        try {
+          const arr = JSON.parse(raw);
+          if (Array.isArray(arr)) recentCelebsRef.current = arr;
+        } catch {}
+      })
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -465,7 +545,6 @@ export default function App() {
           { sound: deadS },
           { sound: musicS },
           { sound: introS },
-          { sound: clapsS },
           { sound: winS },
         ] = await Promise.all([
           Audio.Sound.createAsync(eatSound),
@@ -475,7 +554,6 @@ export default function App() {
             volume: 0.35,
           }),
           Audio.Sound.createAsync(introSound, { volume: 0.85 }),
-          Audio.Sound.createAsync(clapsSound, { volume: 0.9 }),
           Audio.Sound.createAsync(winSound, { volume: 0.95 }),
         ]);
         if (cancelled) {
@@ -483,7 +561,6 @@ export default function App() {
           deadS.unloadAsync();
           musicS.unloadAsync();
           introS.unloadAsync();
-          clapsS.unloadAsync();
           winS.unloadAsync();
           return;
         }
@@ -491,7 +568,6 @@ export default function App() {
         deadRef.current = deadS;
         musicRef.current = musicS;
         introRef.current = introS;
-        clapsRef.current = clapsS;
         winRef.current = winS;
         setAudioReady(true);
       } catch (e) {
@@ -504,13 +580,11 @@ export default function App() {
       deadRef.current?.unloadAsync();
       musicRef.current?.unloadAsync();
       introRef.current?.unloadAsync();
-      clapsRef.current?.unloadAsync();
       winRef.current?.unloadAsync();
       eatRef.current = null;
       deadRef.current = null;
       musicRef.current = null;
       introRef.current = null;
-      clapsRef.current = null;
       winRef.current = null;
     };
   }, []);
@@ -550,10 +624,6 @@ export default function App() {
   const playDead = useCallback(() => {
     if (!settingsRef.current.sfxEnabled) return;
     deadRef.current?.replayAsync().catch(() => {});
-  }, []);
-  const playClaps = useCallback(() => {
-    if (!settingsRef.current.sfxEnabled) return;
-    clapsRef.current?.replayAsync().catch(() => {});
   }, []);
   const playWin = useCallback(() => {
     if (!settingsRef.current.sfxEnabled) return;
@@ -651,6 +721,23 @@ export default function App() {
     [voiceEnabled]
   );
 
+  // Spoken appreciation on game over (replaces the old applause). Gated by
+  // sound effects rather than the number-voice toggle so it still cheers you on.
+  const speakPraise = useCallback((text) => {
+    if (!settingsRef.current.sfxEnabled) return;
+    Speech.stop();
+    Speech.speak(text, { rate: 0.96, pitch: 1.15 });
+  }, []);
+
+  // Choose the next puzzle celebrity, avoiding the recent ones, and remember it.
+  const pickCeleb = useCallback(() => {
+    const celeb = pickCelebExcluding(recentCelebsRef.current);
+    const next = [...recentCelebsRef.current, celeb.name].slice(-RECENT_CELEB_LIMIT);
+    recentCelebsRef.current = next;
+    AsyncStorage.setItem(STORAGE_KEY_RECENT, JSON.stringify(next)).catch(() => {});
+    return celeb;
+  }, []);
+
   const startGame = (t) => {
     setTable(t);
     setScreen('playing');
@@ -700,9 +787,10 @@ export default function App() {
           setPaused={setPaused}
           onEat={playEat}
           onDeath={playDead}
-          onClaps={playClaps}
           onWin={playWin}
+          onPraise={speakPraise}
           onSpeak={speakNumber}
+          pickCeleb={pickCeleb}
           onVibrate={vibrate}
           onSaveBest={(s) => saveBest(table, s)}
           onMenu={goToMenu}
@@ -1411,9 +1499,10 @@ function Game({
   setPaused,
   onEat,
   onDeath,
-  onClaps,
   onWin,
+  onPraise,
   onSpeak,
+  pickCeleb,
   onVibrate,
   onSaveBest,
   onMenu,
@@ -1433,9 +1522,7 @@ function Game({
   // Game Over card slides in.
   const [reviewing, setReviewing] = useState(false);
   const [levelUpFlash, setLevelUpFlash] = useState(0);
-  const [celeb] = useState(
-    () => CELEBRITIES[Math.floor(Math.random() * CELEBRITIES.length)]
-  );
+  const [celeb, setCeleb] = useState(() => pickCeleb());
   const [revealOrder, setRevealOrder] = useState(() => makeRevealOrder());
 
   // Game-over card entrance + one-shot celebration trigger.
@@ -1449,14 +1536,14 @@ function Game({
   const foodRef = useRef(food);
   const scoreRef = useRef(score);
   const bestRef = useRef(bestScore);
-  const cbRef = useRef({ onEat, onDeath, onClaps, onWin, onSaveBest, onSpeak, onVibrate });
+  const cbRef = useRef({ onEat, onDeath, onWin, onPraise, onSaveBest, onSpeak, onVibrate });
   useEffect(() => { snakeRef.current = snake; }, [snake]);
   useEffect(() => { foodRef.current = food; }, [food]);
   useEffect(() => { scoreRef.current = score; }, [score]);
   useEffect(() => { bestRef.current = bestScore; }, [bestScore]);
   useEffect(() => {
-    cbRef.current = { onEat, onDeath, onClaps, onWin, onSaveBest, onSpeak, onVibrate };
-  }, [onEat, onDeath, onClaps, onWin, onSaveBest, onSpeak, onVibrate]);
+    cbRef.current = { onEat, onDeath, onWin, onPraise, onSaveBest, onSpeak, onVibrate };
+  }, [onEat, onDeath, onWin, onPraise, onSaveBest, onSpeak, onVibrate]);
 
   useEffect(() => {
     onActiveChange(!gameOver);
@@ -1544,7 +1631,7 @@ function Game({
         celebratedRef.current = true;
         const c = celebrationFor(scoreRef.current, won);
         if (c.won) cbRef.current.onWin();
-        else if (c.claps) cbRef.current.onClaps();
+        else cbRef.current.onPraise(c.tier.headline);
         if (c.claps) cbRef.current.onVibrate([0, 60, 70, 60, 70, 140]);
       }
       cardAnim.setValue(0);
@@ -1572,6 +1659,7 @@ function Game({
     setReviewing(false);
     setLevelUpFlash(0);
     setPaused(false);
+    setCeleb(pickCeleb());
     setRevealOrder(makeRevealOrder());
     celebratedRef.current = false;
   };
@@ -1840,12 +1928,16 @@ function Game({
       )}
 
       {paused && !gameOver && (
-        <View style={styles.overlay} pointerEvents="none">
-          <View style={styles.pauseBadge}>
+        <TouchableOpacity
+          style={styles.overlay}
+          activeOpacity={1}
+          onPress={() => setPaused(false)}
+        >
+          <View style={styles.pauseBadge} pointerEvents="none">
             <Text style={styles.pauseTxt}>PAUSED</Text>
-            <Text style={styles.pauseHint}>tap board to resume</Text>
+            <Text style={styles.pauseHint}>tap anywhere to resume</Text>
           </View>
-        </View>
+        </TouchableOpacity>
       )}
     </View>
   );
