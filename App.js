@@ -45,13 +45,17 @@ const WIN_COUNT = LEVEL_SIZE * MAX_LEVEL;
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 const BOARD_PADDING = 12;
-const CELL = Math.floor((SCREEN_W - BOARD_PADDING * 2) / COLS);
+// Keep the whole UI in a phone-width column, centered, so it doesn't balloon on
+// tablets (which made cells huge and pushed the joystick off-screen).
+const CONTENT_MAX_W = 480;
+const CONTENT_W = Math.min(SCREEN_W, CONTENT_MAX_W);
+const CELL = Math.floor((CONTENT_W - BOARD_PADDING * 2) / COLS);
 const BOARD_W = CELL * COLS;
 const ROWS = Math.max(11, Math.floor((SCREEN_H * 0.40) / CELL));
 const BOARD_H = CELL * ROWS;
 
 // Square size for the "here's what you revealed" loss screen.
-const REVEAL_SIZE = Math.round(Math.min(SCREEN_W * 0.82, SCREEN_H * 0.46));
+const REVEAL_SIZE = Math.round(Math.min(SCREEN_W * 0.82, SCREEN_H * 0.46, 420));
 const REVEAL_MS = 2400; // how long the reveal shows before Game Over
 
 const TOP_PAD =
@@ -1019,7 +1023,11 @@ function Menu({ bestScores, onStart, onOpenSettings }) {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.tableGridWrap}>
+      <ScrollView
+        style={styles.menuScroll}
+        contentContainerStyle={styles.menuScrollContent}
+        showsVerticalScrollIndicator={false}
+      >
         <Text style={styles.pickHint}>pick a table</Text>
         <View style={styles.tableGrid}>
           {TABLES.map((t) => (
@@ -1031,7 +1039,7 @@ function Menu({ bestScores, onStart, onOpenSettings }) {
             />
           ))}
         </View>
-      </View>
+      </ScrollView>
 
       <View style={styles.menuFooter}>
         <Text style={styles.menuHint}>swipe to move • tap board to pause</Text>
@@ -2365,6 +2373,9 @@ const styles = StyleSheet.create({
   },
   menuContainer: {
     flex: 1,
+    width: '100%',
+    maxWidth: CONTENT_MAX_W,
+    alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingBottom: 24,
@@ -2386,7 +2397,14 @@ const styles = StyleSheet.create({
     marginTop: 4,
     textTransform: 'uppercase',
   },
-  tableGridWrap: { alignItems: 'center', width: '100%', paddingHorizontal: 18 },
+  menuScroll: { width: '100%', flex: 1 },
+  menuScrollContent: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 18,
+    paddingVertical: 8,
+  },
   pickHint: {
     color: '#fff',
     fontSize: 26,
@@ -2402,6 +2420,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    width: '100%',
   },
   tableBtnWrap: { width: '32%', aspectRatio: 1, padding: 5 },
   tableBtn: {
@@ -2457,6 +2476,9 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
+    width: '100%',
+    maxWidth: CONTENT_MAX_W,
+    alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingBottom: 18,
