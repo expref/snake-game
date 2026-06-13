@@ -363,41 +363,48 @@ function makeUserId() {
   return 'TITU-' + Math.random().toString(36).slice(2, 8).toUpperCase();
 }
 
-// NOTE: placeholder legal copy — replace with your real, lawyer-reviewed
-// policy before publishing to any app store.
-const TERMS_TEXT = `Welcome to Snake × Times Tables ("the Game").
+// In-app legal copy. The authoritative, hosted versions live at the
+// GitHub Pages URLs linked in the Play store listing — keep these in sync
+// with legal/index.html (privacy) and legal/terms.html.
+const TERMS_TEXT = `Welcome to Snake & Multiply ("the App"), an educational game by TITU Games.
 
-1. Acceptance — By playing the Game you agree to these Terms. If you do not agree, please do not use the Game.
+1. Acceptance — By using the App you agree to these Terms. If you do not agree, please do not use the App.
 
-2. License — We grant you a personal, non-transferable, non-exclusive license to use the Game for entertainment and educational purposes.
+2. License — We grant you a personal, non-transferable, non-exclusive license to use the App for entertainment and educational purposes.
 
-3. Acceptable use — You agree not to reverse engineer, resell, or misuse the Game.
+3. Acceptable use — You agree not to reverse engineer, copy, resell, or misuse the App, except where such restriction is prohibited by law.
 
-4. Content — Celebrity names and country references are used for educational illustration only and imply no endorsement.
+4. Content — Public figures and country references are used for educational illustration only and imply no affiliation or endorsement.
 
-5. No warranty — The Game is provided "as is" without warranties of any kind.
+5. No warranty — The App is provided "as is" without warranties of any kind.
 
-6. Limitation of liability — To the maximum extent permitted by law, we are not liable for any damages arising from your use of the Game.
+6. Limitation of liability — To the maximum extent permitted by law, TITU Games is not liable for any damages arising from your use of the App.
 
-7. Changes — We may update these Terms from time to time. Continued use means you accept the updated Terms.
+7. Children — The App is family-friendly and contains no ads, in-app purchases, or chat features. Parents are responsible for supervising children's use of devices.
 
-Last updated: 2026-05-31.`;
+8. Changes — We may update these Terms from time to time. Continued use means you accept the updated Terms.
 
-const PRIVACY_TEXT = `Your privacy matters to us.
+Contact: experiencereflectgrow@gmail.com
 
-1. Data we store — The Game stores your preferences (sound, music, voice, vibration), your best scores, and a randomly generated local User ID. All of this is kept ON YOUR DEVICE only.
+Last updated: 13 June 2026.`;
 
-2. No account required — You can play without signing in. The optional local profile name you enter is stored only on your device.
+const PRIVACY_TEXT = `Your privacy matters to us. In short: Snake & Multiply collects no personal data — everything stays on your device.
 
-3. No tracking — We do not collect analytics, location, contacts, or advertising identifiers.
+1. Data we store — The App stores your preferences (sound, music, voice, vibration), your best scores, an optional display name, and a randomly generated local User ID. All of this is kept ON YOUR DEVICE only and is never sent to us.
+
+2. No account required — You can play without signing in. The optional "login" simply saves a display name locally; it does not create an account on any server.
+
+3. No tracking or ads — We do not use advertising, analytics, or tracking, and we do not collect location, contacts, advertising identifiers, or device data.
 
 4. No third parties — We do not sell or share your data with anyone.
 
-5. Children — The Game is designed to be family friendly and does not knowingly collect personal information from children.
+5. Children — The App is family-friendly and suitable for children. We do not knowingly collect personal information from anyone, including children, and the App is designed to comply with the Google Play Families policy, COPPA, and GDPR-K.
 
-6. Your control — You can clear all stored data at any time using "Reset progress" in Settings, or by uninstalling the Game.
+6. Your control — You can clear all stored data at any time using "Reset progress" in Settings, or by uninstalling the App.
 
-Last updated: 2026-05-31.`;
+Contact: experiencereflectgrow@gmail.com
+
+Last updated: 13 June 2026.`;
 
 function hexToRgb(hex) {
   const h = hex.replace('#', '');
