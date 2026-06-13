@@ -138,8 +138,7 @@ function winSound() {
   addNote(buf, N.E6, 0.72, 1.5, 0.22);
   addNote(buf, N.G6, 0.74, 1.5, 0.2);
 
-  // Crowd erupts once the chord lands.
-  addApplause(buf, 0.55, dur, 150, 0.24);
+  // Clapping/applause removed — win sound is now just the musical fanfare.
 
   normalize(buf, 0.92);
   softClip(buf, 1.1);
